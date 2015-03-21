@@ -16,7 +16,7 @@ deny = (params)->
   list.deny.push(params)
 
 order = (first, second)->
-  list.order = arguments
+  list.order = [arguments[0], arguments[1]]
 
 checkList = (list, user, text)->
   for params in list
@@ -61,7 +61,7 @@ module.exports = (robot)->
     robot.logger.debug "[hubot-acl] list: " + util.inspect(list).replace(/\n/g, "")
     robot.logger.debug "[hubot-acl] target: " + "user=" + user + ", text=" + text
 
-    if list.order is [allow, deny]
+    if list.order[0] == allow and list.order[1] == deny
       robot.logger.debug "[hubot-acl] order: allow -> deny, default: deny"
       flag = false
       if checkList(list.allow, user, text)
