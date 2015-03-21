@@ -21,8 +21,9 @@ Then add **hubot-acl** to your `external-scripts.json`:
 Catch `acl` event to define your ACL in your hubot script.
 
 ```coffee
-robot.on 'acl', (order, allow, deny)->
-  # your acl settings
+module.exports = (robot)->
+  robot.on 'acl', (order, allow, deny)->
+    # your acl settings
 ```
 
 ACL can be defined in apache.conf-like style.
