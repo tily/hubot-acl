@@ -5,6 +5,7 @@
 #   tily <tidnlyam@gmail.com>
 
 TextListener = require("hubot").TextListener
+util = require("util")
 
 list = allow: [], deny: [], order: null
 
@@ -50,15 +51,15 @@ regex = (robot)->
 
 module.exports = (robot)->
   regex = regex(robot)
-  robot.logger.debug "[hubot-acl] regex: "
+  robot.logger.debug "[hubot-acl] regex: " + regex
 
   robot.listeners.unshift new TextListener robot, regex, (msg)->
     user = msg.message.user.name
     text = msg.match[1]
 
     robot.logger.debug "[hubot-acl] acl check start"
-    robot.logger.debug "[hubot-acl] list: " + list
-    robot.logger.debug "[hubot-acl] target: " + "user=" + user + " , text=" + text
+    robot.logger.debug "[hubot-acl] list: " + util.inspect(list).replace(/\n/g, "")
+    robot.logger.debug "[hubot-acl] target: " + "user=" + user + ", text=" + text
 
     if list.order is [allow, deny]
       robot.logger.debug "[hubot-acl] order: allow -> deny, default: deny"
