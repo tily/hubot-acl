@@ -60,7 +60,7 @@ robot.on 'acl', (order, allow, deny)->
 
 ## working with hubot-acl
 
-```
+```coffee
 robot.on 'acl', (order, allow, deny)->
   order deny, allow
   deny user: /.*/, text: /.*/
