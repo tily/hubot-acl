@@ -4,6 +4,8 @@ A hubot script for access control list.
 
 See [`src/acl.coffee`](src/acl.coffee) for full documentation.
 
+See http://qiita.com/tily/items/71fff32e928ae9caf070 for Japanese README.
+
 ## Installation
 
 In hubot project repo, run:
