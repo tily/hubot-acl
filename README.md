@@ -33,7 +33,7 @@ ACL can be defined in apache.conf-like style.
 ```coffee
 robot.on 'acl', (order, allow, deny)->
   order deny, allow
-  deny user: /.*/, text: /.*/
+  deny text: /.*/
   allow id: [1], text: /.*/
   allow id: [2], text: /^jenkins/
   allow id: [3], text: /^jenkins (list|last|describe)/
