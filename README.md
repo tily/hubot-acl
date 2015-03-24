@@ -65,7 +65,7 @@ robot.on 'acl', (order, allow, deny)->
 ```coffee
 robot.on 'acl', (order, allow, deny)->
   order deny, allow
-  deny user: /.*/, text: /.*/
+  deny text: /.*/
   allow role: ['admin'], text: /.*/
   allow role: ['jenkins'], text: /^jenkins/
   allow role: ['jenkins-readonly'], text: /^jenkins (list|last|describe)/
