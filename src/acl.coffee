@@ -6,7 +6,7 @@
 
 TextListener = require("hubot").TextListener
 util = require("util")
-lodash = require("lodash")
+_ = require("lodash")
 
 list = allow: [], deny: [], order: null
 
