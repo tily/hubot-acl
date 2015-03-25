@@ -25,7 +25,6 @@ checkList = (list, user, role, text)->
     flag = flag && (user.id in item.id) if item.id
     flag = flag && (user.name in item.name) if item.name
     flag = flag && (_.intersection(role, item.role).length > 0) if item.role
-    console.log flag
     return flag if flag
   false
 
