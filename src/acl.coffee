@@ -59,7 +59,7 @@ module.exports = (robot)->
 
   robot.listeners.unshift new TextListener robot, regex, (msg)->
     user = msg.message.user
-    text = msg.match[1]
+    text = msg.match[2]
     role = if robot.auth then robot.auth.userRoles(user) else []
 
     robot.logger.debug "[hubot-acl] acl check start"
