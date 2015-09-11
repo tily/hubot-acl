@@ -47,8 +47,12 @@ regex = (robot)->
       modifiers
     )
   else
+    newName = ""
+    for i in [0..name.length-1]
+      newName += ("[#{name.charAt(i).toLowerCase()}#{name.charAt(i).toUpperCase()}]")
+
     newRegex = new RegExp(
-      "^\\s*[@]?#{name}[:,]?\\s*(#{pattern})",
+      "^\\s*[@]?(#{newName})[:,]?\\s*(#{pattern})",
       modifiers
     )
   newRegex
