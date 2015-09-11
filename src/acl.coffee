@@ -47,8 +47,12 @@ regex = (robot)->
       modifiers
     )
   else
+    newName = ""
+    for i in [0..name.length-1]
+      newName += ("[#{name.charAt(i).toLowerCase()}#{name.charAt(i).toUpperCase()}]")
+
     newRegex = new RegExp(
-      "^\\s*[@]?#{name}[:,]?\\s*(#{pattern})",
+      "^\\s*[@]?(#{newName})[:,]?\\s*(#{pattern})",
       modifiers
     )
   newRegex
@@ -59,7 +63,7 @@ module.exports = (robot)->
 
   robot.listeners.unshift new TextListener robot, regex, (msg)->
     user = msg.message.user
-    text = msg.match[1]
+    text = msg.match[2]
     role = if robot.auth then robot.auth.userRoles(user) else []
 
     robot.logger.debug "[hubot-acl] acl check start"
